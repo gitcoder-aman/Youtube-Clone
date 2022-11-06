@@ -13,4 +13,8 @@
     <string name="Casting">Cast</string>
     <string name="todo">todo</string>
     <string name="youtube">YouTube</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="create_a_short">Create a Short</string>
+    <string name="upload_a_video">Upload a video</string>
+    <string name="go_live">Go live</string>
 </resources>

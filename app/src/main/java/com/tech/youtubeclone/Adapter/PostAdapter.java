@@ -1,6 +1,8 @@
 package com.tech.youtubeclone.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.media.session.MediaController;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tech.youtubeclone.Model.PostModel;
 import com.tech.youtubeclone.R;
+import com.tech.youtubeclone.VideoPageActivity;
 import com.tech.youtubeclone.databinding.DashboardRvSampleBinding;
 
 import java.util.ArrayList;
@@ -38,16 +41,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
 
         PostModel postModel = list.get(position);
 
-        String path = "android.resource://"+ context.getPackageName()+"/raw/song";
-//        holder.binding.videoView.setVideoPath(path);
-        Uri videoURI = Uri.parse(path);
 
-        holder.binding.videoView.setVideoURI(videoURI);
-        holder.binding.videoView.start();
-
-//        MediaController mediaController = new MediaController(context);
-//        holder.binding.videoView.setMediaController(mediaController);
-//        mediaController.setAnchorView(holder.binding.videoView);
+        holder.binding.thumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, VideoPageActivity.class);
+//                intent.putExtra("postId", postModel.getPostId());
+//                intent.putExtra("postedBy", postModel.getPostedBy());
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
 
         holder.binding.postDescription.setText(postModel.getPostDescription());
         holder.binding.postedBy.setText(postModel.getPostedBy());
