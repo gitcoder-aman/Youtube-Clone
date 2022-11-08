@@ -62,4 +62,7 @@ dependencies {
 
     //for store image
     implementation 'com.google.firebase:firebase-storage'
+
+    //picasso image download come to online
+    implementation 'com.squareup.picasso:picasso:2.8'
 }

@@ -11,6 +11,10 @@ public class UserModel {
         this.pass = pass;
     }
 
+    public UserModel() {
+    }
+
+
     public String getEmail() {
         return email;
     }

@@ -3,6 +3,7 @@ package com.tech.youtubeclone;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.session.MediaController;
 import android.net.Uri;
@@ -15,11 +16,16 @@ import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tech.youtubeclone.Model.PostModel;
 import com.tech.youtubeclone.databinding.ActivityVideoPageBinding;
 
 import java.util.HashMap;
@@ -30,6 +36,9 @@ public class VideoPageActivity extends AppCompatActivity {
     ActivityVideoPageBinding binding;
     FirebaseDatabase database;
     FirebaseStorage storage;
+    Intent intent;
+    String postId;
+    String postedBy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,51 +49,39 @@ public class VideoPageActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
 
-        String path = "android.resource://" + getPackageName() + "/raw/song1";
-
-        Uri videoURI = Uri.parse(path);
-
-        //binding.videoView.setVideoPath(path);
-        binding.videoView.setVideoURI(videoURI);
-        binding.videoView.start();
-
-
-//       final String timeStamp = ""+System.currentTimeMillis();
-//        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Videos");
+//        String path = "android.resource://" + getPackageName() + "/raw/song1";
 //
-//        storageReference.putFile(videoURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                Task<Uri>uriTask = taskSnapshot.getStorage().getDownloadUrl();
-//                while(!uriTask.isSuccessful());
-//                Uri downloadUri = uriTask.getResult();
+//        Uri videoURI = Uri.parse(path);
 //
-//                if(uriTask.isSuccessful()){
-//                    HashMap<String,Object>hashMap = new HashMap<>();
-//                    hashMap.put("title",""+"Emran Hsashmi");
-//                    hashMap.put("timeStamp",""+timeStamp);
-//                    hashMap.put("videoUrl",""+downloadUri);
-//
-//                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Videos");
-//                    reference.child(timeStamp)
-//                            .setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                @Override
-//                                public void onSuccess(Void unused) {
-//                                    Toast.makeText(VideoPageActivity.this, "Video uploaded...", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }).addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    Toast.makeText(VideoPageActivity.this, "R"+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-//                                }
-//                            });
-//                }
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(VideoPageActivity.this, "S"+e.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
+//        //binding.videoView.setVideoPath(path);
+//        binding.videoView.setVideoURI(videoURI);
+//        binding.videoView.start();
+
+        intent = getIntent();
+
+        postId = intent.getStringExtra("postId");
+        postedBy = intent.getStringExtra("postedBy");
+
+               Toast.makeText(this, "Post ID: " + postId, Toast.LENGTH_SHORT).show();
+               Toast.makeText(this, "User ID: " + postedBy, Toast.LENGTH_SHORT).show();
+
+               database.getReference().child("posts")
+                       .child(postId).addValueEventListener(new ValueEventListener() {
+                           @Override
+                           public void onDataChange(@NonNull DataSnapshot snapshot) {
+                               PostModel postModel = snapshot.getValue(PostModel.class);
+                               binding.title.setText(postModel.getPostTitle());
+                               binding.videoView.setVideoURI(Uri.parse(postModel.getPostVideo()));
+                               binding.videoView.start();
+
+                           }
+
+                           @Override
+                           public void onCancelled(@NonNull DatabaseError error) {
+
+                           }
+                       });
+
+
     }
 }

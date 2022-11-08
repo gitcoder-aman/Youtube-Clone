@@ -1,12 +1,27 @@
 package com.tech.youtubeclone.Model;
 
+import android.net.Uri;
+
 public class PostModel{
     private String postId;
-    private int postVideo;
+    private String postVideo;
     private String postedBy;
+    private String postImage;
     private String postDescription;
+    private String postTitle;
     private long postedAt;
     private int postLike;
+
+
+
+    public String getPostImage() {
+        return postImage;
+    }
+
+    public void setPostImage(String postImage) {
+        this.postImage = postImage;
+    }
+
 
     public int getCommentCount() {
         return commentCount;
@@ -18,8 +33,9 @@ public class PostModel{
 
     private int commentCount;
 
-    public PostModel(String postId, int postVideo, String postedBy, String postDescription, long postedAt) {
+    public PostModel(String postId, String postImage, String postVideo, String postedBy, String postDescription, long postedAt) {
         this.postId = postId;
+        this.postImage = postImage;
         this.postVideo = postVideo;
         this.postedBy = postedBy;
         this.postDescription = postDescription;
@@ -29,6 +45,13 @@ public class PostModel{
     public PostModel() {
     }
 
+    public String getPostTitle() {
+        return postTitle;
+    }
+
+    public void setPostTitle(String postTitle) {
+        this.postTitle = postTitle;
+    }
     public int getPostLike() {
         return postLike;
     }
@@ -45,11 +68,11 @@ public class PostModel{
         this.postId = postId;
     }
 
-    public int getPostVideo() {
+    public String getPostVideo() {
         return postVideo;
     }
 
-    public void setPostVideo(int postImage) {
+    public void setPostVideo(String postVideo) {
         this.postVideo = postVideo;
     }
 

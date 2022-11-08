@@ -28,7 +28,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:title="Upload Video"
-                    android:background="@color/lightGrey"
+                    android:background="@color/teal_200"
+                    app:titleTextColor="@color/white"
                     android:minHeight="?attr/actionBarSize"
                     android:theme="?attr/actionBarTheme"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -48,14 +49,23 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
-                <VideoView
-                    android:id="@+id/videoUpload"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_150sdp"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+                    <VideoView
+                        android:id="@+id/videoview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_160sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <TextView
                     android:id="@+id/textView6"
@@ -81,14 +91,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/descriptionET" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/videoUpload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/plus"
-                    app:layout_constraintBottom_toBottomOf="@id/videoUpload"
-                    app:layout_constraintEnd_toEndOf="@+id/videoUpload"
-                    app:layout_constraintStart_toStartOf="@+id/videoUpload"
-                    app:layout_constraintTop_toTopOf="@+id/videoUpload" />
+                    app:layout_constraintBottom_toBottomOf="@id/linearLayoutCompat"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayoutCompat"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayoutCompat"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayoutCompat" />
 
                 <EditText
                     android:id="@+id/titleET"
@@ -118,7 +128,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
                 <ImageView
-                    android:id="@+id/thumbnailUpload"
+                    android:id="@+id/thumbnail"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_150sdp"
                     android:layout_marginTop="8dp"
@@ -131,14 +141,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/thumbnailUpload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/plus"
-                    app:layout_constraintBottom_toBottomOf="@+id/thumbnailUpload"
-                    app:layout_constraintEnd_toEndOf="@+id/thumbnailUpload"
-                    app:layout_constraintStart_toStartOf="@+id/thumbnailUpload"
-                    app:layout_constraintTop_toTopOf="@+id/thumbnailUpload" />
+                    app:layout_constraintBottom_toBottomOf="@+id/thumbnail"
+                    app:layout_constraintEnd_toEndOf="@+id/thumbnail"
+                    app:layout_constraintStart_toStartOf="@+id/thumbnail"
+                    app:layout_constraintTop_toTopOf="@+id/thumbnail" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -148,8 +158,25 @@
                     android:layout_marginTop="16dp"
                     android:text="Video Upload"
                     android:textColor="@color/purple_700"
-                    app:layout_constraintStart_toStartOf="@id/thumbnailUpload"
-                    app:layout_constraintTop_toBottomOf="@+id/thumbnailUpload" />
+                    app:layout_constraintStart_toStartOf="@id/thumbnail"
+                    app:layout_constraintTop_toBottomOf="@+id/thumbnail" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/publishBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/textbox"
+                    android:enabled="false"
+                    android:text="Publish"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

@@ -21,15 +21,15 @@
         android:id="@+id/profile_image"
         android:layout_width="@dimen/_45sdp"
         android:layout_height="@dimen/_45sdp"
-        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="@dimen/_6sdp"
         android:src="@drawable/man"
-        app:layout_constraintStart_toStartOf="@+id/thumbnail"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thumbnail"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
-        android:id="@+id/postDescription"
+        android:id="@+id/postTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_6sdp"
@@ -44,14 +44,14 @@
         app:layout_constraintTop_toTopOf="@+id/profile_image" />
 
     <TextView
-        android:id="@+id/postedBy"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_3sdp"
         android:text="News24"
         android:textSize="@dimen/_10ssp"
-        app:layout_constraintStart_toStartOf="@+id/postDescription"
-        app:layout_constraintTop_toBottomOf="@+id/postDescription" />
+        app:layout_constraintStart_toStartOf="@+id/postTitle"
+        app:layout_constraintTop_toBottomOf="@+id/postTitle" />
 
     <TextView
         android:id="@+id/views"
@@ -61,9 +61,9 @@
         android:layout_marginTop="@dimen/_3sdp"
         android:text="256K views"
         android:textSize="@dimen/_10ssp"
-        app:layout_constraintBottom_toBottomOf="@+id/postedBy"
-        app:layout_constraintStart_toEndOf="@+id/postedBy"
-        app:layout_constraintTop_toBottomOf="@+id/postDescription" />
+        app:layout_constraintBottom_toBottomOf="@+id/username"
+        app:layout_constraintStart_toEndOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/postTitle" />
 
     <TextView
         android:id="@+id/time"
@@ -75,15 +75,15 @@
         android:textSize="@dimen/_10ssp"
         app:layout_constraintBottom_toBottomOf="@+id/views"
         app:layout_constraintStart_toEndOf="@+id/views"
-        app:layout_constraintTop_toBottomOf="@+id/postDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/postTitle" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/thumbnailUpload"
-        app:layout_constraintStart_toEndOf="@+id/postDescription"
-        app:layout_constraintTop_toTopOf="@+id/postDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/postTitle"
+        app:layout_constraintTop_toTopOf="@+id/postTitle"
         app:srcCompat="@drawable/ic_more" />
 
     <View

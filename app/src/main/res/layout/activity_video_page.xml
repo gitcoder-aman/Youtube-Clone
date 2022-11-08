@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".VideoPageActivity">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,10 +21,10 @@
             android:layout_width="wrap_content"
             android:layout_height="240dp" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
@@ -34,8 +34,8 @@
         android:textColor="@color/black"
         android:textSize="@dimen/_15ssp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/linearLayout"
-        app:layout_constraintStart_toStartOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
     <TextView
@@ -46,8 +46,8 @@
         android:text="9.2M views"
         android:textColor="@color/black"
         android:textSize="@dimen/_12ssp"
-        app:layout_constraintStart_toStartOf="@+id/description"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/time"
@@ -107,7 +107,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/_10ssp"
         app:layout_constraintBottom_toBottomOf="@+id/follower"
-        app:layout_constraintEnd_toEndOf="@+id/description"
+        app:layout_constraintEnd_toEndOf="@+id/title"
         app:layout_constraintStart_toEndOf="@+id/follower"
         app:layout_constraintTop_toTopOf="@+id/follower" />
 
@@ -117,7 +117,7 @@
         android:scrollbars="none"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_5sdp"
-        app:layout_constraintEnd_toEndOf="@id/description"
+        app:layout_constraintEnd_toEndOf="@id/title"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/profile_image"
         app:layout_constraintTop_toBottomOf="@+id/profile_image">
