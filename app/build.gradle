@@ -65,4 +65,7 @@ dependencies {
 
     //picasso image download come to online
     implementation 'com.squareup.picasso:picasso:2.8'
+
+    //time ago dependencies
+    implementation "com.github.marlonlom:timeago:4.0.3"
 }

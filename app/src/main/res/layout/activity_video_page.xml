@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_4sdp"
         android:text="9.2M views"
+        android:inputType="number"
         android:textColor="@color/black"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="@+id/title"
@@ -90,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_6sdp"
         android:text="243k"
+        android:inputType="number"
         android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="@+id/channelName"
         app:layout_constraintStart_toEndOf="@+id/channelName"
@@ -99,7 +101,6 @@
         android:id="@+id/subscribeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_20sdp"
         android:background="@drawable/subscribe_box"
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
@@ -108,7 +109,6 @@
         android:textSize="@dimen/_10ssp"
         app:layout_constraintBottom_toBottomOf="@+id/follower"
         app:layout_constraintEnd_toEndOf="@+id/title"
-        app:layout_constraintStart_toEndOf="@+id/follower"
         app:layout_constraintTop_toTopOf="@+id/follower" />
 
     <HorizontalScrollView

@@ -17,4 +17,5 @@
     <string name="create_a_short">Create a Short</string>
     <string name="upload_a_video">Upload a video</string>
     <string name="go_live">Go live</string>
+    <string name="views">views</string>
 </resources>

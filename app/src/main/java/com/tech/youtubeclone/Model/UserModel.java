@@ -4,6 +4,7 @@ public class UserModel {
     private String name;
     private String email;
     private String pass;
+    private int followCount;
 
     public UserModel(String name, String email, String pass) {
         this.email = email;
@@ -12,6 +13,15 @@ public class UserModel {
     }
 
     public UserModel() {
+    }
+
+
+    public int getFollowCount() {
+        return followCount;
+    }
+
+    public void setFollowCount(int followCount) {
+        this.followCount = followCount;
     }
 
 

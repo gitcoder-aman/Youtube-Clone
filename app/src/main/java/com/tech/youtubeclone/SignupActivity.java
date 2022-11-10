@@ -86,7 +86,7 @@ public class SignupActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                startActivity(new Intent(SignupActivity.this,MainActivity.class));
+                                                startActivity(new Intent(SignupActivity.this,LoginActivity.class));
                                                 finish();
                                                 Toast.makeText(SignupActivity.this, "Creating user successful", Toast.LENGTH_SHORT).show();
                                             }else{

@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.tech.youtubeclone.databinding.ActivityLoginBinding;
 
 import java.util.Objects;
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth auth;
     ProgressDialog dialog;
     FirebaseUser currentUser;
+    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Logging...");
@@ -134,6 +137,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
     @Override

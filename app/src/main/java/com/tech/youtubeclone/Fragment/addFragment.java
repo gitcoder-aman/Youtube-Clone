@@ -149,6 +149,7 @@ public class addFragment extends Fragment {
                                 postModel.setPostTitle(binding.titleET.getText().toString());
                                 postModel.setPostDescription(binding.descriptionET.getText().toString());
                                 postModel.setPostedAt(new Date().getTime());
+                                postModel.setViews(0);
 
                                 reference1.putFile(videoUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override

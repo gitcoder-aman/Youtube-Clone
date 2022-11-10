@@ -1,5 +1,8 @@
 package com.tech.youtubeclone.Adapter;
 
+import static android.provider.Settings.System.getString;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.media.session.MediaController;
@@ -7,10 +10,13 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.marlonlom.utilities.timeago.TimeAgo;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -42,6 +48,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
         return new viewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
@@ -52,6 +59,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
                 .into(holder.binding.thumbnail);
 
         holder.binding.postTitle.setText(postModel.getPostTitle());
+        holder.binding.views.setText(String.valueOf(postModel.getViews())+" "+ context.getString(R.string.views));
+
+        String time = TimeAgo.using(postModel.getPostedAt()); // using time ago
+        holder.binding.time.setText(time);
 
         //set name,profile
         FirebaseDatabase.getInstance().getReference().child("Users")
@@ -79,11 +90,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
 
-
+                //views updated
+                FirebaseDatabase.getInstance().getReference()
+                        .child("posts").child(postModel.getPostId()).child("views").setValue(postModel.getViews()+1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(context, "Thanks for watching.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
-
-//        holder.binding.time.setText((int) new Date().getTime());
 
     }
 
