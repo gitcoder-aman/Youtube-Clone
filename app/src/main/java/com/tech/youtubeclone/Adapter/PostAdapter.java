@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.session.MediaController;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,7 +96,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
                         .child("posts").child(postModel.getPostId()).child("views").setValue(postModel.getViews()+1).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(context, "Thanks for watching.", Toast.LENGTH_SHORT).show();
+                                Log.d("play","Thanks for watching");
                             }
                         });
             }
